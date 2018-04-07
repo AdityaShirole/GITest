@@ -1,0 +1,104 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "writeIdea": {
+      "http": {
+        "path": "/writeIdea",
+        "verb": "post"
+      },
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      }
+    },
+    "viewIdeaByDate": {
+      "http": {
+        "path": "/viewIdeaByDate",
+        "verb": "post"
+      },
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      }
+    },
+    "rateIdea": {
+      "http": {
+        "path": "/rateIdea",
+        "verb": "post"
+      },
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      }
+    },
+    "viewIdea": {
+      "http": {
+        "path": "/viewIdea",
+        "verb": "post"
+      },
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      }
+    },
+    "exportToCsv": {
+      "http": {
+        "path": "/exportToCsv",
+        "verb": "post"
+      },
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      }
+    }
+  }
+}

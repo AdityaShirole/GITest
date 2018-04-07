@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "0.0.0.0",
+    "port": 27017,
+    "url": "",
+    "database": "gitest",
+    "password": "",
+    "name": "db",
+    "user": "",
+    "connector": "mongodb"
+  }
+}
