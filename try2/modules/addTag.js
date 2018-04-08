@@ -1,6 +1,6 @@
 // Rate an idea out of 0-10 stars
-var app = require("../server/server")
-
+'use strict';
+var app = require('../server/server');
 var mongodb = app.dataSources.db.connector;
 var update = function(ideaTitle, tag, userId) {
   var result = [];
@@ -9,22 +9,21 @@ var update = function(ideaTitle, tag, userId) {
       var collection = db.collection('idea'); //name of db collection
       collection.updateOne({
         ideaTitle: ideaTitle,
-        ownerId: userId
+        ownerId: userId,
       }, {
         $addToSet: {
-          "tags": tag
-        }
+          'tags': tag,
+        },
       }, function(err, res) {
-
         if (err) {
-          reject(err)
+          reject(err);
         }
-        resolve(true)
+        resolve(true);
       });
     });
-  })
-}
+  });
+};
 
 module.exports = {
-  tag: update
-}
+  tag: update,
+};

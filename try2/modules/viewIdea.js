@@ -1,6 +1,6 @@
 // View Idea by given Date
-
-var app = require("../server/server")
+'use strict';
+var app = require('../server/server');
 
 var mongodb = app.dataSources.db.connector;
 var collect = function(months, minRating, userId) {
@@ -18,7 +18,7 @@ var collect = function(months, minRating, userId) {
           }
           var reqDate = new Date();
           reqDate.setMonth(reqDate.getMonth() - months);
-          console.log("reqDate", reqDate);
+          console.log('reqDate', reqDate);
           realRes.forEach(function(item) {
             if (item.dateOfCreation.getDate() >= reqDate.getDate()) {
               if (item.ownerId.toString() == userId) {
@@ -29,13 +29,13 @@ var collect = function(months, minRating, userId) {
             }
           });
           // console.log("resultArray", result);
-          resolve(result)
+          resolve(result);
         });
       });
     });
-  })
-}
+  });
+};
 
 module.exports = {
-  collect: collect
-}
+  collect: collect,
+};

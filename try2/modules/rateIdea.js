@@ -1,5 +1,6 @@
 // Rate an idea out of 0-10 stars
-var app = require("../server/server")
+'use strict';
+var app = require('../server/server');
 
 var mongodb = app.dataSources.db.connector;
 var update = function(ideaTitle, rating, userId) {
@@ -9,22 +10,21 @@ var update = function(ideaTitle, rating, userId) {
       var collection = db.collection('idea'); //name of db collection
       collection.updateOne({
         ideaTitle: ideaTitle,
-        ownerId: userId
+        ownerId: userId,
       }, {
         $set: {
-          "rating": rating
-        }
+          'rating': rating,
+        },
       }, function(err, res) {
-
         if (err) {
-          reject(err)
+          reject(err);
         }
-        resolve(true)
+        resolve(true);
       });
     });
-  })
-}
+  });
+};
 
 module.exports = {
-  rate: update
-}
+  rate: update,
+};
