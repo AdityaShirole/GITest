@@ -7,11 +7,6 @@ var update = function(ideaTitle, rating, userId) {
   return new Promise(function(resolve, reject) {
     mongodb.connect(function(err, db) {
       var collection = db.collection('idea'); //name of db collection
-      if (rating < 0 || rating > 10) {
-        reject({
-          err: "Rating should be within 0 to 10"
-        })
-      }
       collection.updateOne({
         ideaTitle: ideaTitle,
         ownerId: userId

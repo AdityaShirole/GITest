@@ -8,6 +8,9 @@ var collect = function(date, userId) {
     mongodb.connect(function(err, db) {
       var collection = db.collection('idea'); //name of db collection
       collection.find(function(err, res) {
+        if (err) {
+          reject(err);
+        }
         res.toArray(function(err, realRes) {
           if (err) {
             reject(err);

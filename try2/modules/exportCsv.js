@@ -11,6 +11,9 @@ var write = function(userId) {
     mongodb.connect(function(err, db) {
       var collection = db.collection('idea'); //name of db collection
       collection.find(function(err, res) {
+        if (err) {
+          reject(err);
+        }
         res.toArray(function(err, realRes) {
           if (err) {
             reject(err);
@@ -22,7 +25,7 @@ var write = function(userId) {
             }
           });
           //Write result to csv
-          fs.writeFileSync("/home/pragati/ideas.csv", writeToCsv)
+          fs.writeFileSync("/home/pragati/gitest/try2/ideaCsvs/" + userId + new Date().getMilliseconds() + ".csv", writeToCsv)
           resolve(true)
         });
       });
