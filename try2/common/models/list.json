@@ -1,0 +1,48 @@
+{
+  "name": "list",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "listTitle": {
+      "type": "string",
+      "required": true
+    },
+    "ideaArray": {
+      "type": "array",
+      "required": false
+    },
+    "dateOfCreation": {
+      "type": "date",
+      "required": true
+    }
+
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "ownerId"
+    },
+    "ideas": {
+      "type": "hasMany",
+      "model": "idea",
+      "foreignKey": ""
+    }
+  },
+  "acls": [{
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "$everyone",
+    "permission": "DENY"
+  }, {
+    "accessType": "*",
+    "principalType": "ROLE",
+    "principalId": "$owner",
+    "permission": "ALLOW"
+  }],
+  "methods": {}
+}

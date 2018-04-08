@@ -5,6 +5,7 @@ var rateIdeaJs = require('../../modules/rateIdea');
 var viewIdea = require('../../modules/viewIdea');
 var exportCsv = require('../../modules/exportCsv');
 var addTagJs = require('../../modules/addTag');
+var populateListJs = require('../../modules/populateList');
 module.exports = function(User) {
 
 
@@ -108,7 +109,7 @@ module.exports = function(User) {
     })
   }
 
-  // Export all ideas to csv 
+  // Export all ideas to csv
   User.exportToCsv = function(ctx, cb) {
     var writePromise = exportCsv.write(ctx.accessToken.userId)
     writePromise.then(function(response) {
@@ -122,4 +123,41 @@ module.exports = function(User) {
     })
   }
 
+  // User can create a list
+  User.createList = function(ctx, cb) {
+    var List = app.models.list;
+
+    if (!ctx.body.title || !ctx.body.ideaArray) {
+      cb("Please Enter title and ideaArray", null);
+    }
+    List.create({
+      "listTitle": ctx.body.title,
+      "ideaArray": ctx.body.ideaArray,
+      "dateOfCreation": new Date(),
+      "ownerId": ctx.accessToken.userId
+    })
+    var result = {
+      "response": "List saved Successfully"
+    };
+    cb(null, result);
+  }
+
+
+  //Populate List
+  User.populateList = function(ctx, cb) {
+
+    if (!ctx.body.title || !ctx.body.ideaArray) {
+      cb("Please Enter listTitle and ideaArray", null);
+    }
+    var ratePromise = populateListJs.populate(ctx.body.title, ctx.body.ideaArray, ctx.accessToken.userId)
+    ratePromise.then(function(response) {
+      // console.log("response", response);
+      var result = {
+        response: response
+      };
+      cb(null, result);
+    }).catch(function(err) {
+      cb(err, null)
+    })
+  }
 };

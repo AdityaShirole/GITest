@@ -7,104 +7,106 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "lists": {
+      "type": "hasMany",
+      "model": "list",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {
     "writeIdea": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
       "http": {
         "path": "/writeIdea",
         "verb": "post"
-      },
-      "accepts": [{
-        "arg": "data",
-        "type": "object",
-        "required": true,
-        "http": {
-          "source": "req"
-        }
-      }],
-      "returns": {
-        "arg": "result",
-        "type": "object"
       }
     },
     "viewIdeaByDate": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
       "http": {
         "path": "/viewIdeaByDate",
         "verb": "post"
-      },
-      "accepts": [{
-        "arg": "data",
-        "type": "object",
-        "required": true,
-        "http": {
-          "source": "req"
-        }
-      }],
-      "returns": {
-        "arg": "result",
-        "type": "object"
       }
     },
     "rateIdea": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
       "http": {
         "path": "/rateIdea",
         "verb": "post"
-      },
-      "accepts": [{
-        "arg": "data",
-        "type": "object",
-        "required": true,
-        "http": {
-          "source": "req"
-        }
-      }],
-      "returns": {
-        "arg": "result",
-        "type": "object"
       }
     },
     "viewIdea": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
       "http": {
         "path": "/viewIdea",
         "verb": "post"
-      },
-      "accepts": [{
-        "arg": "data",
-        "type": "object",
-        "required": true,
-        "http": {
-          "source": "req"
-        }
-      }],
-      "returns": {
-        "arg": "result",
-        "type": "object"
       }
     },
     "exportToCsv": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
       "http": {
         "path": "/exportToCsv",
         "verb": "post"
-      },
-      "accepts": [{
-        "arg": "data",
-        "type": "object",
-        "required": true,
-        "http": {
-          "source": "req"
-        }
-      }],
-      "returns": {
-        "arg": "result",
-        "type": "object"
       }
     },
     "tagIdea": {
-      "http": {
-        "path": "/tagIdea",
-        "verb": "post"
-      },
       "accepts": [{
         "arg": "data",
         "type": "object",
@@ -116,6 +118,46 @@
       "returns": {
         "arg": "result",
         "type": "object"
+      },
+      "http": {
+        "path": "/tagIdea",
+        "verb": "post"
+      }
+    },
+    "createList": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
+      "http": {
+        "path": "/createList",
+        "verb": "post"
+      }
+    },
+    "populateList": {
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      },
+      "http": {
+        "path": "/populateList",
+        "verb": "post"
       }
     }
   }
