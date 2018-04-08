@@ -4,6 +4,7 @@ var viewIdeaByDateJs = require('../../modules/viewIdeaByDate');
 var rateIdeaJs = require('../../modules/rateIdea');
 var viewIdea = require('../../modules/viewIdea');
 var exportCsv = require('../../modules/exportCsv');
+var addTagJs = require('../../modules/addTag');
 module.exports = function(User) {
 
 
@@ -54,6 +55,20 @@ module.exports = function(User) {
 
     var ratePromise = rateIdeaJs.rate(ctx.body.ideaTitle, ctx.body.rating, ctx.accessToken.userId)
     ratePromise.then(function(response) {
+      // console.log("response", response);
+      var result = {
+        response: response
+      };
+      cb(null, result);
+    }).catch(function(err) {
+      cb(err, null)
+    })
+  }
+
+  User.tagIdea = function(ctx, cb) {
+
+    var tagPromise = addTagJs.tag(ctx.body.ideaTitle, ctx.body.tag, ctx.accessToken.userId)
+    tagPromise.then(function(response) {
       // console.log("response", response);
       var result = {
         response: response

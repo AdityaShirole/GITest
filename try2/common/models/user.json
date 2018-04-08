@@ -99,6 +99,24 @@
         "arg": "result",
         "type": "object"
       }
+    },
+    "tagIdea": {
+      "http": {
+        "path": "/tagIdea",
+        "verb": "post"
+      },
+      "accepts": [{
+        "arg": "data",
+        "type": "object",
+        "required": true,
+        "http": {
+          "source": "req"
+        }
+      }],
+      "returns": {
+        "arg": "result",
+        "type": "object"
+      }
     }
   }
 }
